@@ -1,0 +1,1 @@
+menu:~/mygithub/conf/rofi/rofi.sh,sshx:~/mygithub/conf/rofi/ssh.sh
