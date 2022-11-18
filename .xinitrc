@@ -51,18 +51,23 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
  done
  unset f
 fi
-
 #分辨率
-xrandr --output eDP-1 --mode 2048x1152 --rate 60
+#2560x1440
+#xrandr --output eDP-1 --mode 2560x1440 --rate 60
+xrandr --output eDP-1 --mode 2048x1152 --scale 1x1 --rate 60 --output HDMI-1 --off
 # 输入法
 fcitx5 &
 # 背景图
 feh --bg-fill --randomize ~/tools/wallpaper/*.png
 # 动效
-picom --experimental-backends --config ~/tools/scripts/config/picom.conf -b
+picom --config ~/tools/scripts/config/picom.conf -b
 # 鼠标
 killall imwheel
 imwheel
 #qt5ct
 export QT_QPA_PLATFORMTHEME=qt5ct
+# copyq
+copyq &
+
+[[ -f ~/.Xmodmap ]] && xmodmap ~/.Xmodmap
 exec dwm

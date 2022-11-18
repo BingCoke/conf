@@ -1,0 +1,8 @@
+export _keyboard='^c#bbbbbb^^b#222222^   us |^d^'
+export _system='^c#bbbbbb^^b#222222^  Arch |^d^'
+export _bat='^c#bbbbbb^^b#222222^  100% |^d^'
+export _vol='^c#bbbbbb^^b#222222^ 婢 --% |^d^'
+export _resource='^c#bbbbbb^^b#222222^   44G/712G:7% |^d^'
+export _cpu='^c#bbbbbb^^b#222222^ 閭 02% |^d^'
+export _mem='^c#bbbbbb^^b#222222^  11% |^d^'
+export _date='^c#bbbbbb^^b#222222^  11/18 19:47 |^d^'
