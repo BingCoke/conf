@@ -24,4 +24,3 @@ main() {
     fi
 }
 
-main

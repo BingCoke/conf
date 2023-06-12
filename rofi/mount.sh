@@ -1,3 +1,18 @@
+
+mounty(){
+
+	#coproc ( st -c float -e ssh root@$1 > /dev/null  2>&1)
+	if [ -n "$(ls ~/remote/ | grep "$1")" ] && [ -n "$(ls ~/remote/$1/)" ]; then
+		notify-send " umount $1" -t 5000
+		umount ~/remote/$1
+		rmdir ~/remote/$1
+	else
+		notify-send " mount $1" -t 5000
+		mkdir -p ~/remote/$1 >/dev/null 2>&1
+		sshfs -p 22 $2@$1:/ ~/remote/$1/
+	fi
+}
+
 mountx() {
 	#coproc ( st -c float -e ssh root@$1 > /dev/null  2>&1)
 	if [ -n "$(ls ~/remote/ | grep "$1")" ] && [ -n "$(ls ~/remote/$1/)" ]; then
@@ -19,7 +34,11 @@ case "$*" in
 	echo "Guang"
 	echo "Sea"
 	echo "Chi"
+  echo "arch"
 	;;
+"arch")
+	coproc (mounty 192.168.31.42 bk >/dev/null 2>&1)
+  ;;
 *)
 	coproc (mountx $* >/dev/null 2>&1)
 	exit 0

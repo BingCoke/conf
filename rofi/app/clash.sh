@@ -2,6 +2,8 @@
 #printf "export %s='%s%s%s'\n" $this "$color" "$text|" "$s2d_reset" >> $DWM/statusbar/temp
 fastlink=~/conf/clash/conf/fastlink.yaml
 feiniao=~/conf/clash/conf/feiniao.yaml
+cherry=~/conf/clash/conf/cherry.yaml
+OS=~/conf/clash/conf/OK.yaml
 echo -en "\0prompt\x1fclash\n"
 echo -en "\0data\x1fclash\n"
 this=clashx
@@ -25,6 +27,8 @@ case "$*" in
 "")
 echo "feiniao"
 echo "fastlink"
+echo "cherry"
+echo "OK"
 ;;
 *)
 clashx $*

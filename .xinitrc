@@ -12,13 +12,6 @@ sysmodmap=/etc/X11/xinit/.Xmodmap
 # merge in defaults and keymaps
 
 if [ -f $sysresources ]; then
-
-
-
-
-
-
-
     xrdb -merge $sysresources
 
 fi
@@ -28,13 +21,6 @@ if [ -f $sysmodmap ]; then
 fi
 
 if [ -f "$userresources" ]; then
-
-
-
-
-
-
-
     xrdb -merge "$userresources"
 
 fi
@@ -53,21 +39,22 @@ if [ -d /etc/X11/xinit/xinitrc.d ] ; then
 fi
 #分辨率
 #2560x1440
-#xrandr --output eDP-1 --mode 2560x1440 --rate 60
-xrandr --output eDP-1 --mode 2048x1152 --scale 1x1 --rate 60 --output HDMI-1 --off
+#xrandr --output eDP-1 --mode 2048x1152 --rate 60 --output HDMI-1 --off
 # 输入法
-fcitx5 &
-# 背景图
-feh --bg-fill --randomize ~/tools/wallpaper/*.png
-# 动效
-picom --config ~/tools/scripts/config/picom.conf -b
+# 防止出现问题
 # 鼠标
-killall imwheel
-imwheel
+# killall imwheel
+# imwheel
 #qt5ct
 export QT_QPA_PLATFORMTHEME=qt5ct
-# copyq
-copyq &
+# java程序
+export _JAVA_AWT_WM_NONREPARENTING=1 
+export AWT_TOOLKIT=MToolkit 
+wmname LG3D
 
+xrdb ~/.Xresources
+# copyq
+libinput-libinput-gestures-setup restart
 [[ -f ~/.Xmodmap ]] && xmodmap ~/.Xmodmap
+# exec bspwm
 exec dwm

@@ -7,8 +7,9 @@ this=_vol
 s2d_reset="^d^"
 #color="^c#0e0815^^b#148F77^"
 # color="^c#0e0815^^b#53727d^"
-color="^c#bbbbbb^^b#222222^"
 #$(amixer get Master | awk -F "[][]" '/Left:/ {print $2}' |sed 's/.$//g')
+signal=$(echo "^s$this^" | sed 's/_//')
+
 main() {
     sink=$(pactl info | grep 'Default Sink' | awk '{print $3}')
     volunmuted=$(amixer get Master | grep on)
@@ -23,7 +24,19 @@ main() {
 
     text=" $vol_icon $vol_text "
     sed -i '/^export '$this'=.*$/d' $DWM/statusbar/temp
-    printf "export %s='%s%s%s'\n" $this "$color" "$text|" "$s2d_reset" >> $DWM/statusbar/temp
+    printf "export %s='%s%s%s%s'\n" $this "$signal" "$color" "$text|" "$s2d_reset" >> $DWM/statusbar/temp
 }
 
-main
+click() {
+  case "$1" in
+    U) amixer set Master 5%+ ;;
+    D) amixer set Master 5%- ;;
+  esac
+}
+
+case $1 in
+  click) click $2 ;;
+  *) main ;;
+esac
+
+

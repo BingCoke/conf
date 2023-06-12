@@ -1,5 +1,10 @@
 #! /bin/sh
 
+ssh_role(){
+    coproc ( st -c float -e ssh $1@$2 > /dev/null  2>&1)
+}
+
+
 sshx(){
     coproc ( st -c float -e ssh root@$1 > /dev/null  2>&1)
     exit 0
@@ -17,6 +22,11 @@ echo "Shen"
 echo "Guang"
 echo "Sea"
 echo "Chi"
+echo "other-arch"
+;;
+"other-arch")
+  ssh_role bk 192.168.43.48
+  exit 0;
 ;;
 "Hong")
 sshx $*
