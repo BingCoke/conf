@@ -25,7 +25,8 @@ settings() {
 
 daemons() {
   xfce4-power-manager &
-  picom --config /home/bk/.config/picom-a.conf  --experimental-backends -b
+  # picom --config /home/bk/.config/picom-a.conf  --experimental-backends -b
+  picom -b
   fcitx5 -d
   copyq &
 #  clash &
