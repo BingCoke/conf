@@ -50,22 +50,14 @@ case "$menu" in
       "picom-kill")
         killall picom
         ;;
-      "picom-flush")
-          sed -i 's/backend = "glx"/#backend = "glx"/1' ~/.config/picom.conf
-          sleep 0.2
-          sed -i 's/#backend/backend/1' ~/.config/picom.conf
+      "picom-100")
+				coproc (picom-trans -s 100 >/dev/null 2>&1)
         ;;
-      "picom animations open")
-          sed -i 's/animations = false;/animations = true;/1' ~/.config/picom.conf
+      "picom-reset")
+        picom-trans --reset
         ;;
-      "picom animations close")
-          sed -i 's/animations = true;/animations = false;/1' ~/.config/picom.conf
-        ;;
-      "picom fading open")
-          sed -i 's/fading = false;/fading = true;/1' ~/.config/picom.conf
-        ;;
-      "picom fading close")
-          sed -i 's/fading = true;/fading = false;/1' ~/.config/picom.conf
+      "picom-delete")
+				coproc (picom-trans -s --delete >/dev/null 2>&1)
         ;;
       "touchpad")
         $myconf/rofi/app/touchpad_toggle.sh
@@ -90,12 +82,9 @@ case "$menu" in
         echo "screen-one"
         echo "screen-two"
         echo "picom"
-        echo "picom-kill"
-        echo "picom-flush"
-        echo "picom animations open"
-        echo "picom animations close"
-        echo "picom fading open"
-        echo "picom fading close"
+        echo "picom-100"
+        echo "picom-reset"
+        echo "picom-delete"
         echo "touchpad"
 				;;
 			*)
