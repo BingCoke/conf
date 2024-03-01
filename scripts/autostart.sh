@@ -29,7 +29,8 @@ daemons() {
   fcitx5 -d
   copyq &
 #  clash &
-  clash-verge &
+  #clash-verge &
+  sudo v2raya & 
 }
 
 cron() {

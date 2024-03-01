@@ -4,6 +4,13 @@
 export LNAG=zh_CN.UTF-8
 export LANGUAGE=zh_CN:en_US
 
+GTK_IM_MODULE=fcitx
+QT_IM_MODULE=fcitx
+XMODIFIERS=@im=fcitx
+SDL_IM_MODULE=fcitx
+GLFW_IM_MODULE=ibus
+COGL_ATLAS_DEFAULT_BLIT_MODE=framebuffer
+
 userresources=$HOME/.Xresources
 usermodmap=$HOME/.Xmodmap
 sysresources=/etc/X11/xinit/.Xresources

@@ -1,4 +1,4 @@
-#! /bin/bash
+#!/bin/bash
 source ~/.profile
 # 设置某个模块的状态 update cpu mem ...
 update() {
